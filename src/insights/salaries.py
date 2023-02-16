@@ -76,11 +76,11 @@ def matches_salary_range(job: Dict, salary: Union[int, str]) -> bool:
     elif isinstance(salary, int) is False and isinstance(salary, str) is False:
         raise ValueError
     elif (
-      isinstance(job["min_salary"], int) is not True
-      and isinstance(job["min_salary"], str) is not True
-      or isinstance(job["max_salary"], int) is not True
-      and isinstance(job["max_salary"], str) is not True
-      ):
+        isinstance(job["min_salary"], int) is not True
+        and isinstance(job["min_salary"], str) is not True
+        or isinstance(job["max_salary"], int) is not True
+        and isinstance(job["max_salary"], str) is not True
+    ):
         raise ValueError
     elif int(job["min_salary"]) > int(job["max_salary"]):
         raise ValueError
@@ -88,8 +88,7 @@ def matches_salary_range(job: Dict, salary: Union[int, str]) -> bool:
 
 
 def filter_by_salary_range(
-    jobs: List[dict],
-    salary: Union[str, int]
+    jobs: List[dict], salary: Union[str, int]
 ) -> List[Dict]:
     """Filters a list of jobs by salary range
 
@@ -105,4 +104,11 @@ def filter_by_salary_range(
     list
         Jobs whose salary range contains `salary`
     """
-    raise NotImplementedError
+    filtered = list()
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                filtered.append(job)
+        except ValueError as e:
+            print(e)
+    return filtered
