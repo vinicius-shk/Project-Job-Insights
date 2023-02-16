@@ -18,11 +18,11 @@ def get_unique_industries(path: str) -> List[str]:
         List of unique industries
     """
     jobs = read(path)
-    job_types = set()
+    job_industries = set()
     for job in jobs:
         if job["industry"] != "":
-            job_types.add(job["industry"])
-    return job_types
+            job_industries.add(job["industry"])
+    return job_industries
 
 
 def filter_by_industry(jobs: List[Dict], industry: str) -> List[Dict]:
