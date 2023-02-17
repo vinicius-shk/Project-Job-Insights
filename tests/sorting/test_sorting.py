@@ -1,9 +1,47 @@
 from src.pre_built.sorting import sort_by
-from src.insights.jobs import read
 
 
 def test_sort_by_criteria():
-    file = read("tests/mocks/sort_job_data.csv")
+    file = [
+        {"title": "Web developer", "min_salary": "100", "max_salary": "5000"},
+        {
+            "title": "Front end developer",
+            "min_salary": "1000",
+            "max_salary": "6000",
+        },
+        {
+            "title": "Back end developer",
+            "min_salary": "1050",
+            "max_salary": "3000",
+        },
+        {
+            "title": "Full stack end developer",
+            "min_salary": "4000",
+            "max_salary": "8000",
+        },
+        {"title": "Eu sou uma batata", "min_salary": "", "max_salary": "8000"},
+        {
+            "title": "Eu sou uma polenta",
+            "min_salary": "10000",
+            "max_salary": "",
+        },
+        {
+            "title": "Eu sou uma geleia",
+            "min_salary": "'invalid'",
+            "max_salary": "1000",
+        },
+        {
+            "title": "Eu sou uma goiaba",
+            "min_salary": "1000",
+            "max_salary": "'invalid'",
+        },
+        {
+            "title": "Eu sou uma banana",
+            "min_salary": "1000",
+            "max_salary": "''",
+        },
+    ]
+
     treated = [
         dic
         for dic in file
